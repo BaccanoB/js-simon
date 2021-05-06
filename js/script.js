@@ -5,8 +5,14 @@ function randomNumber(min,max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// .includes()
-// array1.includes(array2)
+function enterNumber(num,array){
+    for (var i = 0; i < num; i++){
+        var userChoice = parseInt(prompt("Inserisci un numero!"));
+        array.push(userChoice);
+        }
+    return userNumbers;
+}
+
 
 function comparisonArray (array1, array2){
     for (var i = 0; i < array2.length; i++){
@@ -28,7 +34,7 @@ console.log(randomNumbers);
 alert("Memorizza questi numeri!:\n" + randomNumbers);
 
 // Da li parte un timer di 30 secondi.
-
+// Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt()
 
 var seconds = 30;
 
@@ -37,13 +43,8 @@ var countdown = setInterval( function () {
 
      if (seconds == 0){
         clearInterval(countdown); 
-
-        for (var i = 0; i < 5; i++){
-        var userChoice = parseInt(prompt("Inserisci un numero!"));
-        userNumbers.push(userChoice);
-        }
+        userNumbers = enterNumber(5,userNumbers);
         console.log(userNumbers);
-
      }else {
          seconds --;
      }
@@ -52,11 +53,8 @@ var countdown = setInterval( function () {
 
 var userNumbers = [];
 
-
-
-
-// Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt()
-
-
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
+
+// .includes()
+// array1.includes(array2)
 
