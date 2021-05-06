@@ -13,7 +13,6 @@ function enterNumber(num,array){
     return userNumbers;
 }
 
-
 function comparisonArray (array1, array2){
     for (var i = 0; i < array2.length; i++){
         if (array1[i] == array2[i]){
@@ -36,7 +35,8 @@ alert("Memorizza questi numeri!:\n" + randomNumbers);
 // Da li parte un timer di 30 secondi.
 // Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt()
 
-var seconds = 30;
+var seconds = 5;
+var score;
 
 var countdown = setInterval( function () {
     console.log(seconds);
@@ -45,6 +45,8 @@ var countdown = setInterval( function () {
         clearInterval(countdown); 
         userNumbers = enterNumber(5,userNumbers);
         console.log(userNumbers);
+        score = comparisonArray(userNumbers,randomNumbers);
+        console.log(score);
      }else {
          seconds --;
      }
@@ -57,4 +59,3 @@ var userNumbers = [];
 
 // .includes()
 // array1.includes(array2)
-
