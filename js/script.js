@@ -5,17 +5,17 @@ function randomNumber(min,max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function enterNumber(num,array){
+function enterNumber(num, array){
     for (var i = 0; i < num; i++){
         var userChoice = parseInt(prompt("Inserisci un numero!"));
         array.push(userChoice);
-        }
+    }
     return userNumbers;
 }
 
-function comparisonArray (array1, array2){
-    for (var i = 0; i < array2.length; i++){
-        if (array1[i] == array2[i]){
+function elementInArray(element, array){
+    for (var i = 0; i < array.length; i++){
+        if (element == array[i]){
             return true;
         }
     }
@@ -23,39 +23,27 @@ function comparisonArray (array1, array2){
 }
 
 var randomNumbers = [];
+var score = [];
+var userNumbers = [];
 
 for (var i = 0; i < 5; i++){
     var casualNumbers = randomNumber(1,100);
     randomNumbers.push(casualNumbers);
 }
-console.log(randomNumbers);
 
 alert("Memorizza questi numeri!:\n" + randomNumbers);
 
 // Da li parte un timer di 30 secondi.
-// Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt()
+setTimeout(function() {
+    // Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt()
+    enterNumber(5, userNumbers);
 
-var seconds = 5;
-var score;
-
-var countdown = setInterval( function () {
-    console.log(seconds);
-
-     if (seconds == 0){
-        clearInterval(countdown); 
-        userNumbers = enterNumber(5,userNumbers);
-        console.log(userNumbers);
-        score = comparisonArray(userNumbers,randomNumbers);
-        console.log(score);
-     }else {
-         seconds --;
-     }
-
- }, 1000);
-
-var userNumbers = [];
-
-// Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
-
-// .includes()
-// array1.includes(array2)
+    // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
+    for (var i = 0; i<userNumbers.length; i++) {
+        if (elementInArray(userNumbers[i], randomNumbers)) {
+            score.push(userNumbers[i]);
+        }
+    }
+    console.log("Hai indovinato " + score.length + " numeri: " + score.join(", "));
+    // [1, 2, 3].join(", ") => "1, 2, 3"
+}, 3000);
